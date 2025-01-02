@@ -14,6 +14,14 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('admin', function () {
+    return "Hay Admin";
+})->middleware(['auth', 'role:admin']);
+
+Route::get('users', function () {
+    return "Hay user";
+})->middleware(['auth', 'role:user']);
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
